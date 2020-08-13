@@ -1,3 +1,5 @@
+import edu.princeton.cs.algs4.StdRandom;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -49,6 +51,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
         Item temp = queue[index];
         queue[index] = queue[size -= 1];
+        queue[size] = null;
 
         if (size == queue.length / 4) resize(queue.length / 2);
 

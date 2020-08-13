@@ -2,7 +2,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class Deque<Item> implements Iterable<Item> {
-    private Node sentinel;
+    private final Node sentinel;
     private int size;
 
     private class Node {
@@ -94,10 +94,10 @@ public class Deque<Item> implements Iterable<Item> {
 
     // return an iterator over items in order from front to back
     public Iterator<Item> iterator() {
-        return new DListIterator();
+        return new dListIterator();
     }
 
-    public class DListIterator implements Iterator<Item> {
+    private class dListIterator implements Iterator<Item> {
         Node curr = sentinel.next;
 
         @Override
@@ -125,30 +125,30 @@ public class Deque<Item> implements Iterable<Item> {
     public static void main(String[] args) {
         int n = 5;
 
-        Deque<Integer> DList = new Deque<>();
+        Deque<Integer> dList = new Deque<>();
 
-        StdOut.println("List is empty: " + DList.isEmpty());
-
-        for (int i = 0; i < n; i++) {
-            DList.addLast(i);
-        }
-
-        StdOut.println("Size of DList is " + DList.size());
-
-        for (int a : DList) {
-            for (int b : DList)
-                StdOut.print(a + "-" + b + " ");
-            StdOut.println();
-        }
-
-        StdOut.println("List is empty: " + DList.isEmpty());
+        System.out.println("List is empty: " + dList.isEmpty());
 
         for (int i = 0; i < n; i++) {
-            StdOut.print(DList.removeLast() + "- ");
-            StdOut.println();
+            dList.addLast(i);
         }
 
-        StdOut.println("List is empty: " + DList.isEmpty());
+        System.out.println("Size of dList is " + dList.size());
+
+        for (int a : dList) {
+            for (int b : dList)
+                System.out.print(a + "-" + b + " ");
+            System.out.println();
+        }
+
+        System.out.println("List is empty: " + dList.isEmpty());
+
+        for (int i = 0; i < n; i++) {
+            System.out.print(dList.removeLast() + "- ");
+            System.out.println();
+        }
+
+        System.out.println("List is empty: " + dList.isEmpty());
     }
 
 }
